@@ -14,7 +14,13 @@ function App() {
   const [shipment, setShipment] = useState([]);
   const [miscellaneous, setMiscellaneous] = useState([]); 
 
-  const API_URL = "http://localhost:5000/api";
+  // Automatically choose backend based on environment
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  (window.location.hostname === "localhost"
+    ? "http://localhost:5000/api"
+    : "https://warehouse-blush-nine.vercel.app/api");
+
 
   // --- Sync helpers: Send data to backend Neon DB ---
 const saveScheduleToDB = async (scheduleData) => {

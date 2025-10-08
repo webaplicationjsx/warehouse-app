@@ -172,11 +172,15 @@ app.post("/api/miscellaneous/save", async (req, res) => {
   }
 });
 
+// --- START SERVER (for local dev only) ---
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, async () => {
+    await initTables();
+    console.log(`🚀 Backend running locally on http://localhost:${PORT}`);
+  });
+}
 
-
-// --- START SERVER ---
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, async () => {
-  await initTables(); // ✅ Ensure all tables exist
-  console.log(`🚀 Backend running on http://localhost:${PORT}`);
-});
+// --- Export for Vercel ---
+export default app;
+  
