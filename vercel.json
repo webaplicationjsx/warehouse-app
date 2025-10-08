@@ -1,11 +1,8 @@
-{
-  "version": 2,
-  "builds": [
-    { "src": "vite.config.js", "use": "@vercel/static-build", "config": { "distDir": "dist" } },
-    { "src": "api/**/*.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/server.js" },
-    { "src": "/(.*)", "dest": "/index.html" }
-  ]
-}
++            ~
+Unexpected token ':' in expression or statement.
+At line:9 char:12
++     { "src": "/(.*)", "dest": "/index.html" }
++            ~
+Unexpected token ':' in expression or statement.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : UnexpectedToken
