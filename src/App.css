@@ -1,0 +1,258 @@
+/* Reset some defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+/* Login */
+.login-container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #9ff1c8;
+}
+
+.login-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  text-align: center;
+}
+
+.login-card h1 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 0.6rem;
+  border: none;
+  background-color: #1a73e8;
+  color: #fff;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-card button:hover {
+  background-color: #1669c1;
+}
+
+/* App layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Freeze table headers */
+.table-container {
+  max-height: 500px; /* scrollable area */
+  overflow-y: auto;
+}
+
+.table-container thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f3f4f6; /* matches previous header bg */
+  z-index: 1;
+}
+
+/* Sidebar */
+.sidebar {
+  position: sticky; /* This freezes the sidebar */
+  top: 0;
+  width: 220px;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s;
+}
+
+.sidebar.closed {
+  width: 60px;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.sidebar-header h2 {
+  font-size: 1.2rem;
+  color: #1a73e8;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.sidebar nav button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  cursor: pointer;
+  color: #333;
+  transition: background 0.2s;
+}
+
+.sidebar nav button:hover,
+.sidebar nav button.active {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+}
+
+.sidebar .icon {
+  margin-right: 0.5rem;
+}
+
+.sidebar.closed .label {
+  display: none;
+}
+
+.logout-btn {
+  margin-top: auto;
+  color: #d93025;
+}
+
+.logout-btn:hover {
+  background-color: #fce8e6;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-x: auto;
+}
+
+/* Card section */
+.card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.card h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Table */
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f1f3f4;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+th {
+  font-weight: 500;
+  color: #555;
+}
+
+/* Input and button in table header */
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.actions input[type="text"] {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.actions button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  background-color: #1a73e8;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.actions button:hover {
+  background-color: #1669c1;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    z-index: 1000;
+    height: 100vh;
+  }
+
+  .main-content {
+    margin-left: 220px;
+  }
+
+  .sidebar.closed + .main-content {
+    margin-left: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+}
